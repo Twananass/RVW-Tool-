@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RVW Tool</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="nav">
+    <button onclick="showView('search')">Zoeken</button>
+    <button onclick="showView('knowledge')">Kennisbank</button>
+    <button onclick="showView('admin')">Admin</button>
+  </div>
+</header>
+
+<main class="page">
+
+<section id="searchView">
+  <input id="searchInput" placeholder="Zoek feitcode...">
+  <div id="results"></div>
+
+  <h3>RVW</h3>
+  <textarea id="preview"></textarea>
+</section>
+
+<section id="knowledgeView" class="hidden">
+  <h2>Kennisbank</h2>
+  <div id="knowledge"></div>
+</section>
+
+<section id="adminView" class="hidden">
+  <h2>Admin</h2>
+  <button onclick="seed()">Seed data</button>
+</section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
