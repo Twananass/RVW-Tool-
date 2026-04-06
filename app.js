@@ -1,27 +1,39 @@
-const els={};
+const els = {};
 document.querySelectorAll('[id]').forEach(e=>els[e.id]=e);
 
-function showView(v){
+function showView(view){
   document.querySelectorAll('section').forEach(s=>s.classList.add('hidden'));
-  document.getElementById(v+'View').classList.remove('hidden');
+  document.getElementById(view+'View').classList.remove('hidden');
 }
 
-const factcodes=[
-{code:'A1',title:'Test',template:'Ik zag {{gedraging}}',fields:['gedraging']}
+const factcodes = [
+  {
+    code:"A1",
+    title:"Maximumsnelheid",
+    template:"Ik zag dat bestuurder de maximumsnelheid overschreed op {{locatie}}."
+  },
+  {
+    code:"R305",
+    title:"Voetpad niet gebruiken",
+    template:"Ik zag dat betrokkene als voetganger niet het voetpad gebruikte op {{locatie}}."
+  }
 ];
 
-function render(){
-  els.results.innerHTML='';
+function renderList(){
+  els.results.innerHTML = "";
+
   factcodes.forEach(f=>{
-    const d=document.createElement('div');
-    d.textContent=f.code;
-    d.onclick=()=>openFact(f);
-    els.results.appendChild(d);
+    const div = document.createElement("div");
+    div.className="card";
+    div.innerHTML = `<b>${f.code}</b><br>${f.title}`;
+    div.onclick = ()=>openFact(f);
+    els.results.appendChild(div);
   });
 }
 
 function openFact(f){
-  els.preview.value=f.template.replace('{{gedraging}}','gedraging');
+  els.preview.value = f.template.replace("{{locatie}}","[locatie invullen]");
+  window.scrollTo({top:200, behavior:"smooth"});
 }
 
-render();
+renderList();
